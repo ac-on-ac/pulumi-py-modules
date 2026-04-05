@@ -70,7 +70,7 @@ class _PulumiMocks(pulumi.runtime.Mocks):
         "registryName",
         "databaseName",
         "virtualNetworkName",  # parent ref for subnets/peerings; own name for VNets
-        "resourceGroupName",   # must remain last — parent ref for almost every resource
+        "resourceGroupName",  # must remain last — parent ref for almost every resource
     )
 
     def new_resource(
