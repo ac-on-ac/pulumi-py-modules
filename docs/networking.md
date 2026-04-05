@@ -12,6 +12,14 @@ VNets, Private DNS Zones, Network Watchers, and related data-source lookups.
 
 ---
 
+## VirtualNetworkPeering
+
+::: pulumi_azure_modules.networking.virtual_network_peering.VirtualNetworkPeering
+    options:
+      show_source: false
+
+---
+
 ## get_virtual_network
 
 ::: pulumi_azure_modules.networking.get_virtual_network.get_virtual_network
