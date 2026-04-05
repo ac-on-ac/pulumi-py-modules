@@ -2,8 +2,6 @@
 
 from __future__ import annotations
 
-from typing import Optional
-
 import pulumi
 import pulumi_azure_native.resources as azure_resources
 
@@ -42,10 +40,10 @@ class ResourceGroup(pulumi.ComponentResource):
         self,
         resource_name: str,
         location: pulumi.Input[str],
-        name: Optional[pulumi.Input[str]] = None,
-        managed_by: Optional[pulumi.Input[str]] = None,
-        tags: Optional[pulumi.Input[dict[str, str]]] = None,
-        opts: Optional[pulumi.ResourceOptions] = None,
+        name: pulumi.Input[str] | None = None,
+        managed_by: pulumi.Input[str] | None = None,
+        tags: pulumi.Input[dict[str, str]] | None = None,
+        opts: pulumi.ResourceOptions | None = None,
     ) -> None:
         """Create a Resource Group.
 

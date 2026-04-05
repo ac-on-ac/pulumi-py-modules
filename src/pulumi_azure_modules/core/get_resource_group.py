@@ -8,7 +8,7 @@ that accepts ``Input[str]`` — no ``.apply()`` unwrapping required.
 
 from __future__ import annotations
 
-from typing import Any, Optional
+from typing import Any
 
 import pulumi
 import pulumi_azure_native.resources as azure_resources
@@ -16,7 +16,7 @@ import pulumi_azure_native.resources as azure_resources
 
 def get_resource_group(
     name: str,
-    opts: Optional[pulumi.InvokeOptions] = None,
+    opts: pulumi.InvokeOptions | None = None,
 ) -> pulumi.Output[Any]:
     """Look up an existing Azure Resource Group by name.
 

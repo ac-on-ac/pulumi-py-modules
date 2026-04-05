@@ -50,6 +50,7 @@ class _GetNWMocks(pulumi.runtime.Mocks):
 
 @pytest.fixture(autouse=True)
 def nw_lookup_mocks() -> None:
+    """Override mocks so getNetworkWatcher invokes return realistic data."""
     pulumi.runtime.set_mocks(
         _GetNWMocks(),
         project="test-project",
@@ -60,12 +61,14 @@ def nw_lookup_mocks() -> None:
 
 @pulumi.runtime.test
 def test_returns_output() -> None:
+    """get_network_watcher returns a non-None Output."""
     result = get_network_watcher(_WATCHER_NAME, _RG)
     assert result is not None
 
 
 @pulumi.runtime.test
 def test_name_resolves() -> None:
+    """name attribute resolves to the looked-up watcher name."""
     result = get_network_watcher(_WATCHER_NAME, _RG)
 
     def check(v: str) -> None:
@@ -76,6 +79,7 @@ def test_name_resolves() -> None:
 
 @pulumi.runtime.test
 def test_location_resolves() -> None:
+    """location attribute resolves to the watcher's region."""
     result = get_network_watcher(_WATCHER_NAME, _RG)
 
     def check(v: str) -> None:
@@ -86,6 +90,7 @@ def test_location_resolves() -> None:
 
 @pulumi.runtime.test
 def test_id_contains_watcher_name() -> None:
+    """id is a non-empty ARM resource ID containing both the watcher and RG names."""
     result = get_network_watcher(_WATCHER_NAME, _RG)
 
     def check(v: str) -> None:

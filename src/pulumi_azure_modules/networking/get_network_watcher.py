@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Any, Optional
+from typing import Any
 
 import pulumi
 import pulumi_azure_native.network as azure_network
@@ -11,7 +11,7 @@ import pulumi_azure_native.network as azure_network
 def get_network_watcher(
     name: str,
     resource_group_name: str,
-    opts: Optional[pulumi.InvokeOptions] = None,
+    opts: pulumi.InvokeOptions | None = None,
 ) -> pulumi.Output[Any]:
     """Look up an existing Azure Network Watcher by name and resource group.
 

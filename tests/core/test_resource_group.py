@@ -9,6 +9,7 @@ from pulumi_azure_modules.core import ResourceGroup
 
 @pulumi.runtime.test
 def test_location_output() -> None:
+    """location output resolves to the value supplied."""
     rg = ResourceGroup("test-rg", location="uksouth", name="rg-test")
 
     def check(v: str) -> None:
@@ -19,6 +20,7 @@ def test_location_output() -> None:
 
 @pulumi.runtime.test
 def test_name_output() -> None:
+    """name output resolves to the provided resource group name."""
     rg = ResourceGroup("test-rg", location="eastus", name="rg-platform-dev")
 
     def check(v: str) -> None:
@@ -29,6 +31,7 @@ def test_name_output() -> None:
 
 @pulumi.runtime.test
 def test_id_is_populated() -> None:
+    """id output is non-empty after resource creation."""
     rg = ResourceGroup("test-rg", location="eastus", name="rg-test")
 
     def check(v: str) -> None:
@@ -39,12 +42,14 @@ def test_id_is_populated() -> None:
 
 @pulumi.runtime.test
 def test_name_is_optional() -> None:
+    """ResourceGroup can be constructed without an explicit name."""
     rg = ResourceGroup("auto-named-rg", location="westeurope")
     assert rg is not None
 
 
 @pulumi.runtime.test
 def test_accepts_tags() -> None:
+    """Tags are accepted without error."""
     rg = ResourceGroup(
         "tagged-rg",
         location="eastus",
@@ -56,6 +61,7 @@ def test_accepts_tags() -> None:
 
 @pulumi.runtime.test
 def test_accepts_managed_by() -> None:
+    """managed_by is forwarded without error."""
     rg = ResourceGroup(
         "managed-rg",
         location="eastus",

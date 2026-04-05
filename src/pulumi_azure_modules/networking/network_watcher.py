@@ -2,8 +2,6 @@
 
 from __future__ import annotations
 
-from typing import Optional
-
 import pulumi
 import pulumi_azure_native.network as azure_network
 
@@ -67,9 +65,9 @@ class NetworkWatcher(pulumi.ComponentResource):
         resource_name: str,
         resource_group_name: pulumi.Input[str],
         location: pulumi.Input[str],
-        name: Optional[pulumi.Input[str]] = None,
-        tags: Optional[pulumi.Input[dict[str, str]]] = None,
-        opts: Optional[pulumi.ResourceOptions] = None,
+        name: pulumi.Input[str] | None = None,
+        tags: pulumi.Input[dict[str, str]] | None = None,
+        opts: pulumi.ResourceOptions | None = None,
     ) -> None:
         """Create a Network Watcher.
 
