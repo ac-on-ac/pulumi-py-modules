@@ -46,10 +46,13 @@ class _PulumiMocks(pulumi.runtime.Mocks):
       you need to mock a specific provider function call.
     """
 
-    # Ordered list of SDK input keys that represent the resource name.
-    # The first key found in the inputs is mapped to ``name`` in the outputs.
+    # Ordered list of SDK input keys that represent the resource's own name.
+    # ``resourceGroupName`` is intentionally last — it is a reference to a
+    # parent resource group for most resources, but for ResourceGroup itself it
+    # is the resource's own name.  More-specific keys are checked first so that
+    # resources like NetworkWatcher (which carry both ``networkWatcherName`` and
+    # ``resourceGroupName`` in their inputs) resolve to the correct value.
     _NAME_INPUT_KEYS: tuple[str, ...] = (
-        "resourceGroupName",
         "networkWatcherName",
         "virtualNetworkName",
         "subnetName",
@@ -61,6 +64,7 @@ class _PulumiMocks(pulumi.runtime.Mocks):
         "serverName",
         "registryName",
         "databaseName",
+        "resourceGroupName",  # must remain last — see note above
     )
 
     def new_resource(
