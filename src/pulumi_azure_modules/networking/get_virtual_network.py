@@ -34,7 +34,7 @@ def get_virtual_network(
         - ``.location``           – ``Output[str]``   – Azure region
         - ``.id``                 – ``Output[str]``   – fully-qualified resource ID
         - ``.address_space``      – ``Output[...]``   – address space (contains
-          ``.address_prefixes``)
+            ``.address_prefixes``)
         - ``.subnets``            – ``Output[list]``  – subnets in the VNet
         - ``.provisioning_state`` – ``Output[str]``   – provisioning state
         - ``.tags``               – ``Output[dict]``  – resource tags
