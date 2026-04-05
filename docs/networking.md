@@ -20,6 +20,54 @@ VNets, Private DNS Zones, Network Watchers, and related data-source lookups.
 
 ---
 
+## NetworkSecurityGroup
+
+::: pulumi_azure_modules.networking.network_security_group.NetworkSecurityGroup
+    options:
+      show_source: false
+
+---
+
+## SecurityRuleArgs
+
+::: pulumi_azure_modules.networking.network_security_group.SecurityRuleArgs
+    options:
+      show_source: false
+
+---
+
+## get_network_security_group
+
+::: pulumi_azure_modules.networking.get_network_security_group.get_network_security_group
+    options:
+      show_source: false
+
+---
+
+## RouteTable
+
+::: pulumi_azure_modules.networking.route_table.RouteTable
+    options:
+      show_source: false
+
+---
+
+## RouteArgs
+
+::: pulumi_azure_modules.networking.route_table.RouteArgs
+    options:
+      show_source: false
+
+---
+
+## get_route_table
+
+::: pulumi_azure_modules.networking.get_route_table.get_route_table
+    options:
+      show_source: false
+
+---
+
 ## get_virtual_network
 
 ::: pulumi_azure_modules.networking.get_virtual_network.get_virtual_network
