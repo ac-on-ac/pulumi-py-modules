@@ -61,7 +61,10 @@ class _PulumiMocks(pulumi.runtime.Mocks):
     _NAME_INPUT_KEYS: tuple[str, ...] = (
         "networkWatcherName",
         "subnetName",
+        "securityRuleName",  # own name for rules; before networkSecurityGroupName
         "networkSecurityGroupName",
+        "routeName",  # own name for routes; before routeTableName (parent ref)
+        "routeTableName",  # own name for route tables; parent ref for routes
         "accountName",
         "vaultName",
         "clusterName",
