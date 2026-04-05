@@ -38,16 +38,44 @@ class _PulumiMocks(pulumi.runtime.Mocks):
 
     Behaviour:
     - ``new_resource`` – returns ``<name>_id`` as the resource id and passes
-      through all input properties as outputs.
+      through all input properties as outputs.  SDK resources pass their name
+      via a type-specific input key (e.g. ``resourceGroupName``) but expose it
+      as ``name`` in outputs; this mock normalises that so tests can assert on
+      ``.name`` without extra wiring.
     - ``call``         – returns an empty dict; override in individual tests when
       you need to mock a specific provider function call.
     """
+
+    # Ordered list of SDK input keys that represent the resource name.
+    # The first key found in the inputs is mapped to ``name`` in the outputs.
+    _NAME_INPUT_KEYS: tuple[str, ...] = (
+        "resourceGroupName",
+        "networkWatcherName",
+        "virtualNetworkName",
+        "subnetName",
+        "networkSecurityGroupName",
+        "accountName",
+        "vaultName",
+        "clusterName",
+        "workspaceName",
+        "serverName",
+        "registryName",
+        "databaseName",
+    )
 
     def new_resource(
         self,
         args: pulumi.runtime.MockResourceArgs,
     ) -> tuple[str, dict]:
-        return (f"{args.name}_id", args.inputs)
+        outputs = dict(args.inputs)
+        # Map the SDK-specific name input to the common ``name`` output key so
+        # that tests can assert on ``.name`` without needing per-resource mocks.
+        if "name" not in outputs:
+            for key in self._NAME_INPUT_KEYS:
+                if key in outputs:
+                    outputs["name"] = outputs[key]
+                    break
+        return (f"{args.name}_id", outputs)
 
     def call(
         self,
