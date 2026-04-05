@@ -9,6 +9,7 @@ Exports
 - :class:`~pulumi_azure_modules.networking.private_dns_zone.PrivateDnsZone`
 - :class:`~pulumi_azure_modules.networking.private_dns_zone.VnetLinkArgs`
 - :func:`~pulumi_azure_modules.networking.get_private_dns_zone.get_private_dns_zone`
+- :class:`~pulumi_azure_modules.networking.virtual_network_peering.VirtualNetworkPeering`
 
 Planned
 -------
@@ -23,6 +24,7 @@ from pulumi_azure_modules.networking.get_virtual_network import get_virtual_netw
 from pulumi_azure_modules.networking.network_watcher import NetworkWatcher
 from pulumi_azure_modules.networking.private_dns_zone import PrivateDnsZone, VnetLinkArgs
 from pulumi_azure_modules.networking.virtual_network import VirtualNetwork
+from pulumi_azure_modules.networking.virtual_network_peering import VirtualNetworkPeering
 
 __all__ = [
     "NetworkWatcher",
@@ -32,4 +34,5 @@ __all__ = [
     "PrivateDnsZone",
     "VnetLinkArgs",
     "get_private_dns_zone",
+    "VirtualNetworkPeering",
 ]
