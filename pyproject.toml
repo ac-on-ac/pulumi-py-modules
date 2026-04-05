@@ -32,10 +32,16 @@ dev = [
     "ruff>=0.4.0",
     "mypy>=1.0.0",
 ]
+docs = [
+    "mkdocs>=1.6.0",
+    "mkdocs-material>=9.5.0",
+    "mkdocstrings[python]>=0.25.0",
+]
 
 [project.urls]
-"Homepage"    = "https://github.com/ac-on-ac/pulumi-py-modules"
-"Bug Tracker" = "https://github.com/ac-on-ac/pulumi-py-modules/issues"
+"Homepage"      = "https://github.com/ac-on-ac/pulumi-py-modules"
+"Documentation" = "https://ac-on-ac.github.io/pulumi-py-modules/"
+"Bug Tracker"   = "https://github.com/ac-on-ac/pulumi-py-modules/issues"
 
 # ---------------------------------------------------------------------------
 # Setuptools configuration

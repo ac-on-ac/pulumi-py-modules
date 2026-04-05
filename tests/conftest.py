@@ -69,7 +69,9 @@ class _PulumiMocks(pulumi.runtime.Mocks):
         "serverName",
         "registryName",
         "databaseName",
+        "virtualNetworkLinkName",  # own name for VNetLinks; before privateZoneName (parent ref)
         "virtualNetworkName",  # parent ref for subnets/peerings; own name for VNets
+        "privateZoneName",  # parent ref for VNetLinks; own name for PrivateZones
         "resourceGroupName",  # must remain last — parent ref for almost every resource
     )
 
