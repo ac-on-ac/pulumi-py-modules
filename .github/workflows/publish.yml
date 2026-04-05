@@ -1,0 +1,78 @@
+name: Publish to PyPI
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: >
+          Version to publish.
+          Semver format: MAJOR.MINOR.PATCH  or  MAJOR.MINOR.PATCH-rc.N
+          Examples: 1.0.0  |  1.2.3  |  2.0.0-rc.1  |  0.3.0-rc.12
+        required: true
+        type: string
+
+jobs:
+  validate-version:
+    name: Validate version string
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check semver format
+        run: |
+          VERSION="${{ github.event.inputs.version }}"
+          # Accepts: 1.2.3  or  1.2.3-rc.N  (N must be a positive integer)
+          if [[ ! "$VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+(-rc\.[1-9][0-9]*)?$ ]]; then
+            echo "::error::Invalid version '$VERSION'."
+            echo "         Expected MAJOR.MINOR.PATCH or MAJOR.MINOR.PATCH-rc.N"
+            exit 1
+          fi
+          echo "Version '$VERSION' is valid."
+
+  build-and-publish:
+    name: Build & Publish
+    runs-on: ubuntu-latest
+    needs: validate-version
+    environment: pypi   # configure PyPI trusted publisher in this GitHub Environment
+
+    permissions:
+      id-token: write   # required for OIDC / trusted publishing
+      contents: write   # required to push the version tag
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Stamp version into pyproject.toml
+        run: |
+          VERSION="${{ github.event.inputs.version }}"
+          sed -i "s/^version = .*/version = \"$VERSION\"/" pyproject.toml
+          echo "Stamped version: $VERSION"
+
+      - name: Stamp version into package __init__.py
+        run: |
+          VERSION="${{ github.event.inputs.version }}"
+          sed -i "s/^__version__ = .*/__version__ = \"$VERSION\"/" src/pulumi_azure_modules/__init__.py
+
+      - name: Commit version bump
+        run: |
+          VERSION="${{ github.event.inputs.version }}"
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add pyproject.toml src/pulumi_azure_modules/__init__.py
+          git commit -m "chore: release v$VERSION"
+          git tag "v$VERSION"
+          git push origin HEAD:main --follow-tags
+
+      - name: Install build tool
+        run: pip install build
+
+      - name: Build sdist and wheel
+        run: python -m build
+
+      - name: Publish to PyPI (trusted publishing / OIDC)
+        uses: pypa/gh-action-pypi-publish@release/v1
+        # No API token needed – uses GitHub OIDC with a PyPI Trusted Publisher.
+        # See https://docs.pypi.org/trusted-publishers/ for setup instructions.
