@@ -39,7 +39,7 @@ class _GetNWMocks(pulumi.runtime.Mocks):
                     ),
                     "tags": {},
                     "provisioningState": "Succeeded",
-                    "etag": "W/\"00000000-0000-0000-0000-000000000000\"",
+                    "etag": 'W/"00000000-0000-0000-0000-000000000000"',
                     "type": "Microsoft.Network/networkWatchers",
                     "azureApiVersion": "2024-05-01",
                 },
