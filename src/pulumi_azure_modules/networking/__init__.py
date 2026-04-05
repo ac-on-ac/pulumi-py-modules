@@ -16,10 +16,12 @@ Exports
 - :class:`~pulumi_azure_modules.networking.route_table.RouteTable`
 - :class:`~pulumi_azure_modules.networking.route_table.RouteArgs`
 - :func:`~pulumi_azure_modules.networking.get_route_table.get_route_table`
+- :class:`~pulumi_azure_modules.networking.subnet.Subnet`
+- :class:`~pulumi_azure_modules.networking.subnet.DelegationArgs`
+- :func:`~pulumi_azure_modules.networking.get_subnet.get_subnet`
 
 Planned
 -------
-- ``Subnet``          – Deploy a Subnet with optional service endpoints.
 - ``PrivateEndpoint`` – Wire up a Private Endpoint for a PaaS resource.
 """
 
@@ -29,6 +31,7 @@ from pulumi_azure_modules.networking.get_network_security_group import (
 from pulumi_azure_modules.networking.get_network_watcher import get_network_watcher
 from pulumi_azure_modules.networking.get_private_dns_zone import get_private_dns_zone
 from pulumi_azure_modules.networking.get_route_table import get_route_table
+from pulumi_azure_modules.networking.get_subnet import get_subnet
 from pulumi_azure_modules.networking.get_virtual_network import get_virtual_network
 from pulumi_azure_modules.networking.network_security_group import (
     NetworkSecurityGroup,
@@ -37,6 +40,7 @@ from pulumi_azure_modules.networking.network_security_group import (
 from pulumi_azure_modules.networking.network_watcher import NetworkWatcher
 from pulumi_azure_modules.networking.private_dns_zone import PrivateDnsZone, VnetLinkArgs
 from pulumi_azure_modules.networking.route_table import RouteArgs, RouteTable
+from pulumi_azure_modules.networking.subnet import DelegationArgs, Subnet
 from pulumi_azure_modules.networking.virtual_network import VirtualNetwork
 from pulumi_azure_modules.networking.virtual_network_peering import VirtualNetworkPeering
 
@@ -55,4 +59,7 @@ __all__ = [
     "RouteTable",
     "RouteArgs",
     "get_route_table",
+    "Subnet",
+    "DelegationArgs",
+    "get_subnet",
 ]

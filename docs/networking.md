@@ -68,6 +68,30 @@ VNets, Private DNS Zones, Network Watchers, and related data-source lookups.
 
 ---
 
+## Subnet
+
+::: pulumi_azure_modules.networking.subnet.Subnet
+    options:
+      show_source: false
+
+---
+
+## DelegationArgs
+
+::: pulumi_azure_modules.networking.subnet.DelegationArgs
+    options:
+      show_source: false
+
+---
+
+## get_subnet
+
+::: pulumi_azure_modules.networking.get_subnet.get_subnet
+    options:
+      show_source: false
+
+---
+
 ## get_virtual_network
 
 ::: pulumi_azure_modules.networking.get_virtual_network.get_virtual_network
