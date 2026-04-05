@@ -21,4 +21,6 @@ def on_page_context(context: dict[str, Any], *, page: Any, **kwargs: Any) -> dic
     """
     for item in page.toc.items:
         item.children = [c for c in item.children if "." not in c.id]
+        for child in item.children:
+            child.children = []
     return context
