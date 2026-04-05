@@ -47,14 +47,19 @@ class _PulumiMocks(pulumi.runtime.Mocks):
     """
 
     # Ordered list of SDK input keys that represent the resource's own name.
-    # ``resourceGroupName`` is intentionally last — it is a reference to a
-    # parent resource group for most resources, but for ResourceGroup itself it
-    # is the resource's own name.  More-specific keys are checked first so that
-    # resources like NetworkWatcher (which carry both ``networkWatcherName`` and
-    # ``resourceGroupName`` in their inputs) resolve to the correct value.
+    # Ordering invariant: a key must come AFTER all keys that are more specific
+    # than it.  Keys that double as parent-resource references (e.g.
+    # ``virtualNetworkName`` for Subnet, ``resourceGroupName`` for everything)
+    # must appear AFTER the child resource's own name key, so that child
+    # resources resolve to their own name rather than their parent's.
+    #
+    # Concretely:
+    #   - Subnet has both ``subnetName`` (own) and ``virtualNetworkName`` (parent)
+    #     → ``subnetName`` must precede ``virtualNetworkName``
+    #   - Most resources have ``resourceGroupName`` (parent) as well as their own
+    #     name key → ``resourceGroupName`` must remain last
     _NAME_INPUT_KEYS: tuple[str, ...] = (
         "networkWatcherName",
-        "virtualNetworkName",
         "subnetName",
         "networkSecurityGroupName",
         "accountName",
@@ -64,7 +69,8 @@ class _PulumiMocks(pulumi.runtime.Mocks):
         "serverName",
         "registryName",
         "databaseName",
-        "resourceGroupName",  # must remain last — see note above
+        "virtualNetworkName",  # parent ref for subnets/peerings; own name for VNets — after child-resource keys
+        "resourceGroupName",   # must remain last — parent ref for almost every resource
     )
 
     def new_resource(
