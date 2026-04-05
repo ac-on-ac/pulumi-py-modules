@@ -105,7 +105,7 @@ class NetworkWatcher(pulumi.ComponentResource):
         )
 
         self.name = nw.name
-        self.location = nw.location
+        self.location = pulumi.Output.from_input(location)
         self.id = nw.id
         self.resource_group_name = pulumi.Output.from_input(resource_group_name)
 

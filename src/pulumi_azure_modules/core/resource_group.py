@@ -72,7 +72,7 @@ class ResourceGroup(pulumi.ComponentResource):
         )
 
         self.name = rg.name
-        self.location = rg.location
+        self.location = pulumi.Output.from_input(location)
         self.id = rg.id
 
         self.register_outputs({"name": self.name, "location": self.location, "id": self.id})
