@@ -212,9 +212,7 @@ class Subnet(pulumi.ComponentResource):
             nsg_args = azure_network.NetworkSecurityGroupArgs(id=nsg_id)
         elif security_rules is not None:
             if location is None:
-                raise ValueError(
-                    "location is required when security_rules are provided"
-                )
+                raise ValueError("location is required when security_rules are provided")
             child_nsg = NetworkSecurityGroup(
                 f"{resource_name}-nsg",
                 resource_group_name=resource_group_name,
@@ -233,9 +231,7 @@ class Subnet(pulumi.ComponentResource):
             rt_args = azure_network.RouteTableArgs(id=route_table_id)
         elif routes is not None:
             if location is None:
-                raise ValueError(
-                    "location is required when routes are provided"
-                )
+                raise ValueError("location is required when routes are provided")
             child_rt = RouteTable(
                 f"{resource_name}-rt",
                 resource_group_name=resource_group_name,
