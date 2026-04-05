@@ -9,6 +9,7 @@ VNets, Private DNS Zones, Network Watchers, and related data-source lookups.
 ::: pulumi_azure_modules.networking.virtual_network.VirtualNetwork
     options:
       show_source: false
+      show_root_heading: false
 
 ---
 
@@ -17,6 +18,7 @@ VNets, Private DNS Zones, Network Watchers, and related data-source lookups.
 ::: pulumi_azure_modules.networking.virtual_network_peering.VirtualNetworkPeering
     options:
       show_source: false
+      show_root_heading: false
 
 ---
 
@@ -25,6 +27,7 @@ VNets, Private DNS Zones, Network Watchers, and related data-source lookups.
 ::: pulumi_azure_modules.networking.network_security_group.NetworkSecurityGroup
     options:
       show_source: false
+      show_root_heading: false
 
 ---
 
@@ -33,6 +36,7 @@ VNets, Private DNS Zones, Network Watchers, and related data-source lookups.
 ::: pulumi_azure_modules.networking.network_security_group.SecurityRuleArgs
     options:
       show_source: false
+      show_root_heading: false
 
 ---
 
@@ -41,6 +45,7 @@ VNets, Private DNS Zones, Network Watchers, and related data-source lookups.
 ::: pulumi_azure_modules.networking.get_network_security_group.get_network_security_group
     options:
       show_source: false
+      show_root_heading: false
 
 ---
 
@@ -49,6 +54,7 @@ VNets, Private DNS Zones, Network Watchers, and related data-source lookups.
 ::: pulumi_azure_modules.networking.route_table.RouteTable
     options:
       show_source: false
+      show_root_heading: false
 
 ---
 
@@ -57,6 +63,7 @@ VNets, Private DNS Zones, Network Watchers, and related data-source lookups.
 ::: pulumi_azure_modules.networking.route_table.RouteArgs
     options:
       show_source: false
+      show_root_heading: false
 
 ---
 
@@ -65,6 +72,7 @@ VNets, Private DNS Zones, Network Watchers, and related data-source lookups.
 ::: pulumi_azure_modules.networking.get_route_table.get_route_table
     options:
       show_source: false
+      show_root_heading: false
 
 ---
 
@@ -73,6 +81,7 @@ VNets, Private DNS Zones, Network Watchers, and related data-source lookups.
 ::: pulumi_azure_modules.networking.subnet.Subnet
     options:
       show_source: false
+      show_root_heading: false
 
 ---
 
@@ -81,6 +90,7 @@ VNets, Private DNS Zones, Network Watchers, and related data-source lookups.
 ::: pulumi_azure_modules.networking.subnet.DelegationArgs
     options:
       show_source: false
+      show_root_heading: false
 
 ---
 
@@ -89,6 +99,7 @@ VNets, Private DNS Zones, Network Watchers, and related data-source lookups.
 ::: pulumi_azure_modules.networking.get_subnet.get_subnet
     options:
       show_source: false
+      show_root_heading: false
 
 ---
 
@@ -97,6 +108,7 @@ VNets, Private DNS Zones, Network Watchers, and related data-source lookups.
 ::: pulumi_azure_modules.networking.get_virtual_network.get_virtual_network
     options:
       show_source: false
+      show_root_heading: false
 
 ---
 
@@ -105,6 +117,7 @@ VNets, Private DNS Zones, Network Watchers, and related data-source lookups.
 ::: pulumi_azure_modules.networking.private_dns_zone.PrivateDnsZone
     options:
       show_source: false
+      show_root_heading: false
 
 ---
 
@@ -113,6 +126,7 @@ VNets, Private DNS Zones, Network Watchers, and related data-source lookups.
 ::: pulumi_azure_modules.networking.private_dns_zone.VnetLinkArgs
     options:
       show_source: false
+      show_root_heading: false
 
 ---
 
@@ -121,6 +135,7 @@ VNets, Private DNS Zones, Network Watchers, and related data-source lookups.
 ::: pulumi_azure_modules.networking.get_private_dns_zone.get_private_dns_zone
     options:
       show_source: false
+      show_root_heading: false
 
 ---
 
@@ -129,6 +144,7 @@ VNets, Private DNS Zones, Network Watchers, and related data-source lookups.
 ::: pulumi_azure_modules.networking.network_watcher.NetworkWatcher
     options:
       show_source: false
+      show_root_heading: false
 
 ---
 
@@ -137,3 +153,4 @@ VNets, Private DNS Zones, Network Watchers, and related data-source lookups.
 ::: pulumi_azure_modules.networking.get_network_watcher.get_network_watcher
     options:
       show_source: false
+      show_root_heading: false

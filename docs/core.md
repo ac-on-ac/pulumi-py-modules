@@ -12,6 +12,7 @@ other sub-package.
 ::: pulumi_azure_modules.core.resource_group.ResourceGroup
     options:
       show_source: false
+      show_root_heading: false
 
 ---
 
@@ -20,3 +21,4 @@ other sub-package.
 ::: pulumi_azure_modules.core.get_resource_group.get_resource_group
     options:
       show_source: false
+      show_root_heading: false
