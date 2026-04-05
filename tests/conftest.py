@@ -69,7 +69,7 @@ class _PulumiMocks(pulumi.runtime.Mocks):
         "serverName",
         "registryName",
         "databaseName",
-        "virtualNetworkName",  # parent ref for subnets/peerings; own name for VNets — after child-resource keys
+        "virtualNetworkName",  # parent ref for subnets/peerings; own name for VNets
         "resourceGroupName",   # must remain last — parent ref for almost every resource
     )
 
