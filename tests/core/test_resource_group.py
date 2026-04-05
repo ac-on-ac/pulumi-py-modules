@@ -9,7 +9,7 @@ from pulumi_azure_modules.core import ResourceGroup
 
 @pulumi.runtime.test
 def test_location_output() -> None:
-    """location output resolves to the value supplied."""
+    """Location output resolves to the value supplied."""
     rg = ResourceGroup("test-rg", location="uksouth", name="rg-test")
 
     def check(v: str) -> None:
@@ -20,7 +20,7 @@ def test_location_output() -> None:
 
 @pulumi.runtime.test
 def test_name_output() -> None:
-    """name output resolves to the provided resource group name."""
+    """Name output resolves to the provided resource group name."""
     rg = ResourceGroup("test-rg", location="eastus", name="rg-platform-dev")
 
     def check(v: str) -> None:
@@ -31,7 +31,7 @@ def test_name_output() -> None:
 
 @pulumi.runtime.test
 def test_id_is_populated() -> None:
-    """id output is non-empty after resource creation."""
+    """Id output is non-empty after resource creation."""
     rg = ResourceGroup("test-rg", location="eastus", name="rg-test")
 
     def check(v: str) -> None:

@@ -13,7 +13,7 @@ _NAME = "nw-eastus"
 
 @pulumi.runtime.test
 def test_name_output() -> None:
-    """name output resolves to the value supplied."""
+    """Name output resolves to the value supplied."""
     nw = NetworkWatcher("test-nw", resource_group_name=_RG, location=_LOCATION, name=_NAME)
 
     def check(v: str) -> None:
@@ -24,7 +24,7 @@ def test_name_output() -> None:
 
 @pulumi.runtime.test
 def test_location_output() -> None:
-    """location output resolves to the region supplied."""
+    """Location output resolves to the region supplied."""
     nw = NetworkWatcher("test-nw", resource_group_name=_RG, location=_LOCATION, name=_NAME)
 
     def check(v: str) -> None:
@@ -35,7 +35,7 @@ def test_location_output() -> None:
 
 @pulumi.runtime.test
 def test_id_is_populated() -> None:
-    """id output is non-empty after resource creation."""
+    """Id output is non-empty after resource creation."""
     nw = NetworkWatcher("test-nw", resource_group_name=_RG, location=_LOCATION, name=_NAME)
 
     def check(v: str) -> None:
