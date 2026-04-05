@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import dataclasses
+from typing import Optional
 
 import pulumi
 import pulumi_azure_native.network as azure_network
@@ -112,7 +113,7 @@ class Subnet(pulumi.ComponentResource):
     name: pulumi.Output[str]
     """The Azure resource name of the subnet."""
 
-    address_prefix: pulumi.Output[str | None]
+    address_prefix: pulumi.Output[Optional[str]]  # noqa: UP045
     """The primary address-prefix CIDR of the subnet (e.g. ``"10.1.0.0/24"``).
 
     This output is populated when ``address_prefix`` was passed at construction
